@@ -1,5 +1,3 @@
-import json
-
 import yaml
 
 from api.main import app
