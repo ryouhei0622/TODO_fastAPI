@@ -1,0 +1,150 @@
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    Task:
+      properties:
+        done:
+          default: false
+          description: "\u5B8C\u4E86\u30D5\u30E9\u30B0"
+          title: Done
+          type: boolean
+        id:
+          title: Id
+          type: integer
+        title:
+          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          title: Title
+          type: string
+      required:
+      - id
+      title: Task
+      type: object
+    TaskCreate:
+      properties:
+        title:
+          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          title: Title
+          type: string
+      title: TaskCreate
+      type: object
+    TaskCreateResponse:
+      properties:
+        id:
+          title: Id
+          type: integer
+        title:
+          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          title: Title
+          type: string
+      required:
+      - id
+      title: TaskCreateResponse
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+info:
+  title: FastAPI
+  version: 0.1.0
+openapi: 3.1.0
+paths:
+  /tasks:
+    get:
+      operationId: list_tasks_tasks_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Task'
+                title: Response List Tasks Tasks Get
+                type: array
+          description: Successful Response
+      summary: List Tasks
+    post:
+      operationId: create_task_tasks_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskCreateResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Task
+  /tasks/{task_id}:
+    delete:
+      operationId: delete_task_tasks__task_id__delete
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Delete Task
+    put:
+      operationId: update_task_tasks__task_id__put
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Update Task
+  /tasks/{task_id}/done:
+    delete:
+      operationId: unmark_task_as_done_tasks__task_id__done_delete
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Unmark Task As Done
+    put:
+      operationId: mark_task_as_done_tasks__task_id__done_put
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Mark Task As Done
