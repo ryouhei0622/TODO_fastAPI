@@ -1,0 +1,35 @@
+'{"openapi": "3.1.0", "info": {"title": "FastAPI", "version": "0.1.0"}, "paths": {"/tasks":
+  {"get": {"summary": "List Tasks", "operationId": "list_tasks_tasks_get", "responses":
+  {"200": {"description": "Successful Response", "content": {"application/json": {"schema":
+  {"items": {"$ref": "#/components/schemas/Task"}, "type": "array", "title": "Response
+  List Tasks Tasks Get"}}}}}}, "post": {"summary": "Create Task", "operationId": "create_task_tasks_post",
+  "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/TaskCreate"}}},
+  "required": true}, "responses": {"200": {"description": "Successful Response", "content":
+  {"application/json": {"schema": {"$ref": "#/components/schemas/TaskCreateResponse"}}}},
+  "422": {"description": "Validation Error", "content": {"application/json": {"schema":
+  {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/tasks/{task_id}":
+  {"put": {"summary": "Update Task", "operationId": "update_task_tasks__task_id__put",
+  "responses": {"200": {"description": "Successful Response", "content": {"application/json":
+  {"schema": {}}}}}}, "delete": {"summary": "Delete Task", "operationId": "delete_task_tasks__task_id__delete",
+  "responses": {"200": {"description": "Successful Response", "content": {"application/json":
+  {"schema": {}}}}}}}, "/tasks/{task_id}/done": {"put": {"summary": "Mark Task As
+  Done", "operationId": "mark_task_as_done_tasks__task_id__done_put", "responses":
+  {"200": {"description": "Successful Response", "content": {"application/json": {"schema":
+  {}}}}}}, "delete": {"summary": "Unmark Task As Done", "operationId": "unmark_task_as_done_tasks__task_id__done_delete",
+  "responses": {"200": {"description": "Successful Response", "content": {"application/json":
+  {"schema": {}}}}}}}}, "components": {"schemas": {"HTTPValidationError": {"properties":
+  {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array",
+  "title": "Detail"}}, "type": "object", "title": "HTTPValidationError"}, "Task":
+  {"properties": {"title": {"type": "string", "title": "Title", "example": "\u30af\u30ea\u30fc\u30cb\u30f3\u30b0\u3092\u53d6\u308a\u306b\u884c\u304f"},
+  "id": {"type": "integer", "title": "Id"}, "done": {"type": "boolean", "title": "Done",
+  "description": "\u5b8c\u4e86\u30d5\u30e9\u30b0", "default": false}}, "type": "object",
+  "required": ["id"], "title": "Task"}, "TaskCreate": {"properties": {"title": {"type":
+  "string", "title": "Title", "example": "\u30af\u30ea\u30fc\u30cb\u30f3\u30b0\u3092\u53d6\u308a\u306b\u884c\u304f"}},
+  "type": "object", "title": "TaskCreate"}, "TaskCreateResponse": {"properties": {"title":
+  {"type": "string", "title": "Title", "example": "\u30af\u30ea\u30fc\u30cb\u30f3\u30b0\u3092\u53d6\u308a\u306b\u884c\u304f"},
+  "id": {"type": "integer", "title": "Id"}}, "type": "object", "required": ["id"],
+  "title": "TaskCreateResponse"}, "ValidationError": {"properties": {"loc": {"items":
+  {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title":
+  "Location"}, "msg": {"type": "string", "title": "Message"}, "type": {"type": "string",
+  "title": "Error Type"}}, "type": "object", "required": ["loc", "msg", "type"], "title":
+  "ValidationError"}}}}'
