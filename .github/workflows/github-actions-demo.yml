@@ -13,12 +13,14 @@ jobs:
           python -m pip install poetry
       - name: Install project
         run: poetry install
+      - name: Backup the original schema
+        run: cp openapi_schema_test.yaml openapi_schema_test.yaml.bak
       - name: Dump app schema
         run: |
           make gen
       - name: Compare the schemas
         run: |
-          DIFF=$(diff openapi_schema_test.yaml <(git show HEAD:openapi_schema_test.yaml) || true)
+          DIFF=$(diff openapi_schema_test.yaml openapi_schema_test.yaml.bak || true)
           if [ "$DIFF" != "" ]; then
             echo "Schemas are different:"
             echo "$DIFF"
