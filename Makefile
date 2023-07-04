@@ -1,2 +1,2 @@
 gen:
-	python get_scheme.py
+	python get_schema_remain_order.py
