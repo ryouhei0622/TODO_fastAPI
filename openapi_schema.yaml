@@ -13,14 +13,14 @@ components:
       properties:
         done:
           default: false
-          description: "\u5B8C\u4E86\u30D5\u30E9\u30B0"
+          description: 完了フラグ
           title: Done
           type: boolean
         id:
           title: Id
           type: integer
         title:
-          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          example: クリーニングを取りに行く
           title: Title
           type: string
       required:
@@ -30,7 +30,7 @@ components:
     TaskCreate:
       properties:
         title:
-          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          example: クリーニングを取りに行く
           title: Title
           type: string
       title: TaskCreate
@@ -41,7 +41,7 @@ components:
           title: Id
           type: integer
         title:
-          example: "\u30AF\u30EA\u30FC\u30CB\u30F3\u30B0\u3092\u53D6\u308A\u306B\u884C\u304F"
+          example: クリーニングを取りに行く
           title: Title
           type: string
       required:
