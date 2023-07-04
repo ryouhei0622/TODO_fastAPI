@@ -16,8 +16,7 @@ jobs:
       - name: Backup the original schema
         run: cp openapi_schema_test.yaml openapi_schema_test.yaml.bak
       - name: Dump app schema
-        run: |
-          make gen
+        run: make gen
       - name: Compare the schemas
         run: |
           DIFF=$(diff openapi_schema_test.yaml openapi_schema_test.yaml.bak || true)
