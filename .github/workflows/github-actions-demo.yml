@@ -23,3 +23,4 @@ jobs:
             echo "Schemas are different:"
             echo "$DIFF"
             exit 1
+          fi
