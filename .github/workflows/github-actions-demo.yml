@@ -16,3 +16,6 @@ jobs:
       - name: Dump app schema
         run: |
           make gen
+      - name: Compare schemas
+        run: |
+          diff openapi_schema_test.yaml ${{ github.workspace }}/openapi_schema_test.yaml || echo "::error::Schemas are different!"
