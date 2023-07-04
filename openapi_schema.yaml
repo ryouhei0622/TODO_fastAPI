@@ -13,7 +13,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Response List Tasks Tasks Get
+                title: Response List Tasks Tasks 
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
