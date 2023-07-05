@@ -5,18 +5,51 @@ info:
 paths:
   /tasks:
     get:
-      summary: List Tasks
-      operationId: list_tasks_tasks_get
+      summary: Get Tasks
+      operationId: get_tasks_tasks_get
+      parameters:
+      - required: true
+        schema:
+          title: Project Id
+          type: string
+        name: project_id
+        in: query
+      - required: true
+        schema:
+          title: Site Id
+          type: string
+        name: site_id
+        in: query
+      - required: true
+        schema:
+          title: Scan Id
+          type: string
+        name: scan_id
+        in: query
+      - required: true
+        schema:
+          title: Lod
+          type: string
+        name: lod
+        in: query
+      - required: true
+        schema:
+          title: Suffix
+          type: string
+        name: suffix
+        in: query
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
               schema:
-                title: Response List Tasks Tasks Get
-                type: array
-                items:
-                  $ref: '#/components/schemas/Task'
+                $ref: '#/components/schemas/HTTPValidationError'
     post:
       summary: Create Task
       operationId: create_task_tasks_post
