@@ -12,6 +12,17 @@ async def list_tasks():
     return [task_schema.Task(id=1, title="1つ目のTODOタスク")]
 
 
+@router.get("/tasks")
+async def get_tasks(
+    project_id: str,
+    site_id: str,
+    scan_id: str,
+    lod: str,
+    suffix: str,
+) -> None:
+    pass
+
+
 @router.post("/tasks", response_model=task_schema.TaskCreateResponse)
 async def create_task(task_body: task_schema.TaskCreate):
     return task_schema.TaskCreateResponse(id=1, **task_body.dict())
