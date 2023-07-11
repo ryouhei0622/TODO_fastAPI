@@ -5,51 +5,18 @@ info:
 paths:
   /tasks:
     get:
-      summary: Get Tasks
-      operationId: get_tasks_tasks_get
-      parameters:
-      - required: true
-        schema:
-          title: Project Id
-          type: string
-        name: project_id
-        in: query
-      - required: true
-        schema:
-          title: Site Id
-          type: string
-        name: site_id
-        in: query
-      - required: true
-        schema:
-          title: Scan Id
-          type: string
-        name: scan_id
-        in: query
-      - required: true
-        schema:
-          title: Lod
-          type: string
-        name: lod
-        in: query
-      - required: true
-        schema:
-          title: Suffix
-          type: string
-        name: suffix
-        in: query
+      summary: List Tasks
+      operationId: list_tasks_tasks_get
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
-              schema: {}
-        '422':
-          description: Validation Error
-          content:
-            application/json:
               schema:
-                $ref: '#/components/schemas/HTTPValidationError'
+                title: Response List Tasks Tasks Get
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
     post:
       summary: Create Task
       operationId: create_task_tasks_post
@@ -66,6 +33,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TaskCreateResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /tasks/projects/{project_id}/sites/{site_id}/scans/{scan_id}/lod/{lod}/pcd/{suffix}/signeds3download:
+    get:
+      summary: Get Tasks
+      operationId: 
+        get_tasks_tasks_projects__project_id__sites__site_id__scans__scan_id__lod__lod__pcd__suffix__signeds3download_get
+      parameters:
+      - required: true
+        schema:
+          title: Project Id
+          type: string
+        name: project_id
+        in: path
+      - required: true
+        schema:
+          title: Site Id
+          type: string
+        name: site_id
+        in: path
+      - required: true
+        schema:
+          title: Scan Id
+          type: string
+        name: scan_id
+        in: path
+      - required: true
+        schema:
+          title: Lod
+          type: string
+        name: lod
+        in: path
+      - required: true
+        schema:
+          title: Suffix
+          type: string
+        name: suffix
+        in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
         '422':
           description: Validation Error
           content:
