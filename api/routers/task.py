@@ -36,9 +36,3 @@ async def update_task():
 @router.delete("/tasks/{task_id}")
 async def delete_task():
     pass
-
-
-def test():
-    print("何やかんや")
-    print("もっともっと")
-    pass
