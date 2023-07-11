@@ -40,4 +40,5 @@ async def delete_task():
 
 def test():
     print("何やかんや")
+    print("もっともっと")
     pass
