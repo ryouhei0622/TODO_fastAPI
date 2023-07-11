@@ -12,7 +12,7 @@ async def list_tasks():
     return [task_schema.Task(id=1, title="1つ目のTODOタスク")]
 
 
-@router.get("/tasks")
+@router.get("/tasks/projects/{project_id}/sites/{site_id}/scans/{scan_id}/lod/{lod}/pcd/{suffix}/signeds3download")
 async def get_tasks(
     project_id: str,
     site_id: str,
@@ -20,7 +20,7 @@ async def get_tasks(
     lod: str,
     suffix: str,
 ) -> None:
-    pass
+    return {"project_id": project_id, "site_id": site_id, "scan_id": scan_id, "load": lod, "suffix": suffix}
 
 
 @router.post("/tasks", response_model=task_schema.TaskCreateResponse)
